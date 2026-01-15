@@ -84,16 +84,32 @@ function createCard(product){
   return card;
 }
 
-/* ==============================
-   BUSCA (NÃO AFETA DESTAQUES)
-================================ */
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const term = searchInput.value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 
-searchInput.addEventListener("input", () => {
-  const term = searchInput.value.toLowerCase();
+      const filtered = products.filter(p => {
+        const nome = p.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const desc = p.descricao
+          ? p.descricao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          : "";
 
-  const filtered = products.filter(p =>
-    p.nome.toLowerCase().includes(term)
-  );
+        return nome.includes(term) || desc.includes(term);
+      });
 
-  renderProducts(filtered);
-});
+      if (featuredCarousel) {
+        featuredCarousel.style.display = term ? "none" : "flex";
+      }
+
+      if (productGrid) {
+        productGrid.style.display = term ? "grid" : "none";
+      }
+
+      renderProducts(filtered);
+    });
+  }
+
+
