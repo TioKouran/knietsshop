@@ -69,24 +69,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      const term = searchInput.value
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
+   searchInput.addEventListener("input", () => {
+  const term = searchInput.value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 
-      const filtered = products.filter(p => {
-        const nome = p.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        const desc = p.descricao ? p.descricao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
-        return nome.includes(term) || desc.includes(term);
-      });
+  const filtered = products.filter(p => {
+    const nome = p.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const desc = p.descricao
+      ? p.descricao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      : "";
 
-      if (featuredCarousel) {
-        featuredCarousel.style.display = term ? "none" : "flex";
-      }
+    return nome.includes(term) || desc.includes(term);
+  });
 
-      renderProducts(filtered);
-    });
+  // CONTROLE DE VISIBILIDADE
+  if (featuredCarousel) {
+    featuredCarousel.style.display = term ? "none" : "flex";
   }
 
+  if (productGrid) {
+    productGrid.style.display = term ? "grid" : "none";
+  }
+
+  renderProducts(filtered);
 });
