@@ -12,7 +12,7 @@ let products = [];
    FETCH
 ================================ */
 
-fetch("produtos.json")
+fetch("./produtos.json")
   .then(res => res.json())
   .then(data => {
     products = data;
@@ -97,3 +97,4 @@ searchInput.addEventListener("input", () => {
 
   renderProducts(filtered);
 });
+
