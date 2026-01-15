@@ -3,84 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
 
   <title>Achados Shopee | Curadoria Inteligente</title>
-  <meta name="description" content="Achados da Shopee selecionados. Produtos úteis, baratos e que valem a pena." />
+  <meta name="description" content="Achados da Shopee selecionados." />
   <meta name="author" content="Kniets Universe" />
-  <link rel="icon" href="Img/Kniets x shoppe.png">
+  <link rel="icon" href="img/kniets-x-shopee.png">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- ==============================
-       HERO
-  ============================== -->
+  <!-- HERO -->
   <header class="hero">
     <div class="hero-content">
       <h1>KNIETS SHOP</h1>
       <h3>Achados da Shopee</h3>
       <p class="lead">
         Curadoria real. Produtos que fazem sentido.
-        Sem lixo. Sem enrolação.
       </p>
 
-      <!-- Campo de busca -->
       <input 
         type="text" 
         id="searchInput"
         placeholder="Pesquisar produto..."
         aria-label="Pesquisar produto"
-        style="
-          margin-top:1.5rem;
-          padding:0.85rem 1.25rem;
-          width:100%;
-          max-width:420px;
-          border-radius:50px;
-          border:1px solid #1f1f1f;
-          background:#050505;
-          color:#fff;
-          outline:none;
-        "
       />
-    </div>
-
-    <!-- Imagem opcional -->
-    <div class="hero-img">
-      <!-- espaço livre caso queira imagem -->
     </div>
   </header>
 
-  <!-- ==============================
-       PRODUTOS
-  ============================== -->
+  <!-- PRODUTOS -->
   <main>
 
     <section class="section-normal">
       <h2>Produtos em destaque</h2>
-      <p class="lead">
-        Clique, confira e compre direto na Shopee.
-      </p>
+      <p class="lead">Clique, confira e compre direto na Shopee.</p>
 
-      <!-- GRID DE PRODUTOS (JS INJETA AQUI) -->
-      <div class="card-group carousel" id="featuredCarousel">
-  <!-- Cards entram via JS -->
-        </div>
-        <!-- 
-          Cards de produto entram aqui via JavaScript.
-          Nenhum produto hardcoded.
-        -->
-      </div>
+      <!-- CARROSSEL -->
+      <div class="card-group carousel" id="featuredCarousel"></div>
+
+      <!-- GRID NORMAL (NECESSÁRIO PRO SEARCH) -->
+      <div class="card-group" id="productGrid"></div>
+
     </section>
 
   </main>
 
-  <!-- ==============================
-       FINAL CTA
-  ============================== -->
+  <!-- CTA -->
   <section class="final-cta dark-section">
     <h2>Atualizado com frequência</h2>
     <p class="lead">
@@ -88,18 +57,11 @@
     </p>
   </section>
 
-  <!-- ==============================
-       FOOTER
-  ============================== -->
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <p>
-      © 2026 • Kniets Universe.
-    </p>
+    <p>© 2026 • Kniets Universe.</p>
   </footer>
 
-  <!-- ==============================
-       JS (FUTURO)
-  ============================== -->
   <script src="script.js"></script>
 
 </body>

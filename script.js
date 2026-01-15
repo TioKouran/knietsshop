@@ -1,100 +1,92 @@
-/* ==============================
-   KNIETS — SHOPEE ACHADOS
-================================ */
+document.addEventListener("DOMContentLoaded", () => {
 
-const productGrid = document.getElementById("productGrid");
-const featuredCarousel = document.getElementById("featuredCarousel");
-const searchInput = document.getElementById("searchInput");
+  const productGrid = document.getElementById("productGrid");
+  const featuredCarousel = document.getElementById("featuredCarousel");
+  const searchInput = document.getElementById("searchInput");
 
-let products = [];
+  let products = [];
 
-/* ==============================
-   FETCH
-================================ */
+  fetch("./produtos.json")
+    .then(res => res.json())
+    .then(data => {
+      products = data;
 
-fetch("./produtos.json")
-  .then(res => res.json())
-  .then(data => {
-    products = data;
+      if (featuredCarousel) renderFeatured(products);
+      if (productGrid) renderProducts(products);
+    })
+    .catch(() => {
+      if (productGrid) {
+        productGrid.innerHTML = "<p>Erro ao carregar produtos.</p>";
+      }
+    });
 
-    renderFeatured(products);
-    renderProducts(products);
-  })
-  .catch(() => {
-    productGrid.innerHTML = "<p>Erro ao carregar produtos.</p>";
-  });
+  function renderFeatured(list){
+    if(!featuredCarousel) return;
 
-/* ==============================
-   DESTAQUES (10 ALEATÓRIOS)
-================================ */
+    const shuffled = [...list].sort(() => 0.5 - Math.random());
+    shuffled.slice(0, 10).forEach(p => {
+      featuredCarousel.appendChild(createCard(p));
+    });
+  }
 
-function renderFeatured(list){
-  if(!featuredCarousel) return;
+  function renderProducts(list){
+  const grid = document.getElementById("productGrid");
+  if (!grid) {
+    console.warn("productGrid não existe no DOM");
+    return;
+  }
 
-  const shuffled = [...list].sort(() => 0.5 - Math.random());
-  const selected = shuffled.slice(0, 10);
-
-  featuredCarousel.innerHTML = "";
-
-  selected.forEach(product => {
-    featuredCarousel.appendChild(createCard(product));
-  });
-}
-
-/* ==============================
-   GRID NORMAL
-================================ */
-
-function renderProducts(list){
-  productGrid.innerHTML = "";
+  grid.innerHTML = "";
 
   if(list.length === 0){
-    productGrid.innerHTML = "<p>Nenhum produto encontrado.</p>";
+    grid.innerHTML = "<p>Nenhum produto encontrado.</p>";
     return;
   }
 
   list.forEach(product => {
-    productGrid.appendChild(createCard(product));
+    grid.appendChild(createCard(product));
   });
 }
 
-/* ==============================
-   CARD COMPONENT
-================================ */
 
-function createCard(product){
-  const card = document.createElement("div");
-  card.className = "card";
+  function createCard(product){
+    const card = document.createElement("div");
+    card.className = "card";
 
-  card.innerHTML = `
-    ${product.imagem ? `
-  <div class="image-wrapper">
-    <img src="${product.imagem}" alt="${product.nome}">
-  </div>
-` : ""}
+    card.innerHTML = `
+      ${product.imagem ? `
+        <div class="image-wrapper">
+          <img src="${product.imagem}" alt="${product.nome}">
+        </div>` : ""}
 
-    <h3>${product.nome}</h3>
-    ${product.preco ? `<p style="color:#fff;font-weight:bold;">${product.preco}</p>` : ""}
-    ${product.descricao ? `<p>${product.descricao}</p>` : ""}
-    <a href="${product.link}" class="btn-primary" target="_blank" rel="noopener">
-      Ver na Shopee
-    </a>
-  `;
+      <h3>${product.nome}</h3>
+      ${product.preco ? `<p style="color:#fff;font-weight:bold;">${product.preco}</p>` : ""}
+      ${product.descricao ? `<p>${product.descricao}</p>` : ""}
+      <a href="${product.link}" class="btn-primary" target="_blank">Ver na Shopee</a>
+    `;
 
-  return card;
-}
+    return card;
+  }
 
-/* ==============================
-   BUSCA (NÃO AFETA DESTAQUES)
-================================ */
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      const term = searchInput.value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 
-searchInput.addEventListener("input", () => {
-  const term = searchInput.value.toLowerCase();
+      const filtered = products.filter(p => {
+        const nome = p.nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const desc = p.descricao ? p.descricao.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+        return nome.includes(term) || desc.includes(term);
+      });
 
-  const filtered = products.filter(p =>
-    p.nome.toLowerCase().includes(term)
-  );
+      if (featuredCarousel) {
+        featuredCarousel.style.display = term ? "none" : "flex";
+      }
 
-  renderProducts(filtered);
+      renderProducts(filtered);
+    });
+  }
+
 });
-
