@@ -1,0 +1,72 @@
+[
+  {
+    "nome": "Videogame Stick 4K 64gb 2 Controles Sem Fio Console Portatil Jogos Retro Antigo",
+    "preco": "R$ 85,99 - R$ 90,99",
+    "descricao": "Console Portátil com 10000 Jogos Clássicos Embutidos, Suporte para TV 4K, 2 Controles Sem Fio, Design Compacto e Leve, Ideal para Jogos Retrô em Qualquer Lugar.",
+    "imagem": "./img/VideogameStick.webp",
+    "link": "https://s.shopee.com.br/7KqkGSjWAy"
+  },
+  {
+    "nome": "Cortador, Fatiador e Ralador Manual Multifuncional De Legumes e Alimentos (12 funções)",
+    "preco": "R$ 39,90",
+    "descricao": "Cortador, Fatiador e Ralador Manual Multifuncional De Legumes e Alimentos com 12 Funções Diferentes, Ideal para Preparar Refeições de Forma Rápida e Prática na Cozinha.",
+    "imagem": "./img/Cortador.webp",
+    "link": "https://s.shopee.com.br/6AemzeKDqI"
+  },
+  {
+    "nome": "Kit Suporte Para Tampa de Panela 4 unidades | Adesivo organizador de Armário | Cozinha Sem furo",
+    "preco": "R$ 29,90",
+    "descricao": "Kit Suporte Para Tampa de Panela 4 unidades | Adesivo organizador de Armário | Cozinha Sem furo | Fácil Instalação | Praticidade e Organização na Cozinha.",
+    "imagem": "./img/tampas.webp",
+    "link": "https://s.shopee.com.br/4LD8oVufvt"
+  },
+  {
+    "nome": "Suporte de Celular Dobrável Bobino para Tomada Turquesa - Universal e Portátil",
+    "preco": "R$ 33,63",
+    "descricao": "Suporte de Celular Dobrável Bobino para Tomada Turquesa - Universal e Portátil, Ideal para Assistir Vídeos e Fazer Chamadas com Conforto em Qualquer Lugar.",
+    "imagem": "./img/suporte.webp",
+    "link": "https://s.shopee.com.br/8KjHaDx1ma"
+  },
+  {
+    "nome": "Kit Organizador Magnético de Cabos e Fios Autoadesivo – Suporte para USB, HDMI e Carregadores",
+    "preco": "R$ 15,98",
+    "descricao": "Kit Organizador Magnético de Cabos e Fios Autoadesivo – Suporte para USB, HDMI e Carregadores, Mantém Seus Cabos Organizados e Acessíveis com Facilidade.",
+    "imagem": "./img/organizadordecabos.webp",
+    "link": "https://s.shopee.com.br/2B8eF4KWqf"
+  },
+  {
+    "nome": "Kit Material Escolar Feminino Completo Com Sem Mochila Escolar Feminina Estojo Escolar Feminino Rosa",
+    "preco": "R$ 87,70",
+    "descricao": "Kit Material Escolar Feminino Completo Com Sem Mochila Escolar Feminina Estojo Escolar Feminino Rosa, Ideal para Estudantes que Buscam Organização e Estilo.",
+    "imagem": "./img/kitescola.webp",
+    "link": "https://s.shopee.com.br/2qOL2N6xvQ"
+  },
+  {
+    "nome": "40 Peças / 46 Peças Jogo De Chave Catraca Caixa De Ferramentas Completa Reversível Soquetes Maleta",
+    "preco": "R$ 31,99",
+    "descricao": "40 Peças / 46 Peças Jogo De Chave Catraca Caixa De Ferramentas Completa Reversível Soquetes Maleta, Ideal para Reparos e Manutenção em Casa ou Oficina.",
+    "imagem": "./img/kitferramentas.webp",
+    "link": "https://s.shopee.com.br/5q1wc25JZH"
+  },
+  {
+    "nome": "Robô Aspirador Inteligente 3 em 1 Limpeza doméstica Silencioso Casa com Pets E4",
+    "preco": "R$ 59,99",
+    "descricao": "Robô Aspirador Inteligente 3 em 1 Limpeza doméstica Silencioso Casa com Pets E4, Ideal para Manter Sua Casa Limpa e Livre de Poeira com Facilidade.",
+    "imagem": "./img/robozin.webp",
+    "link": "https://s.shopee.com.br/9pY5NcApWE"
+  },
+  {
+    "nome": "Mini Ar Condicionado Climatizador Umidificador Ventilador Portátil USB Led Quarto Sala Escritório Mesa Reservatório 600m",
+    "preco": "R$ 40,99",
+    "descricao": "Mini Ar Condicionado Climatizador Umidificador Ventilador Portátil USB Led Quarto Sala Escritório Mesa Reservatório 600ml, Ideal para Refrescar e Umidificar o Ambiente de Forma Prática e Eficiente.",
+    "imagem": "./img/arcondicionado.webp",
+    "link": "https://s.shopee.com.br/3fxS2aUtRR"
+  },
+  {
+    "nome": "Projetor 4K HD, adequado para celular, TV Box, Xbox, PS, PC, suporte WiFi, HY300 Pro Magcubic, envio imediato",
+    "preco": "R$ 95,99",
+    "descricao": "Projetor 4K HD, adequado para celular, TV Box, Xbox, PS, PC, suporte WiFi, HY300 Pro Magcubic, envio imediato, Ideal para Experiências de Cinema em Casa com Alta Qualidade de Imagem.",
+    "imagem": "./img/projetor.webp",
+    "link": "https://s.shopee.com.br/40aIRHW8sW"
+  }
+]
