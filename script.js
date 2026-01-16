@@ -2,87 +2,97 @@
    KNIETS — SHOPEE ACHADOS
 ================================ */
 
-const productGrid = document.getElementById("productGrid");
-const featuredCarousel = document.getElementById("featuredCarousel");
-const searchInput = document.getElementById("searchInput");
+document.addEventListener("DOMContentLoaded", () => {
 
-let products = [];
+  const productGrid = document.getElementById("productGrid");
+  const featuredCarousel = document.getElementById("featuredCarousel");
+  const searchInput = document.getElementById("searchInput");
 
-/* ==============================
-   FETCH
-================================ */
+  let products = [];
 
-fetch("produtos.json")
-  .then(res => res.json())
-  .then(data => {
-    products = data;
+  /* ==============================
+     FETCH
+  ============================== */
 
-    renderFeatured(products);
-    renderProducts(products);
-  })
-  .catch(() => {
-    productGrid.innerHTML = "<p>Erro ao carregar produtos.</p>";
-  });
+  fetch("./produtos.json")
+    .then(res => res.json())
+    .then(data => {
+      products = data;
 
-/* ==============================
-   DESTAQUES (10 ALEATÓRIOS)
-================================ */
+      if (featuredCarousel) renderFeatured(products);
+      if (productGrid) {
+        renderProducts(products);
+        productGrid.style.display = "none"; // carregamento inicial
+      }
+    })
+    .catch(() => {
+      if (productGrid) {
+        productGrid.innerHTML = "<p>Erro ao carregar produtos.</p>";
+      }
+    });
 
-function renderFeatured(list){
-  if(!featuredCarousel) return;
+  /* ==============================
+     DESTAQUES
+  ============================== */
 
-  const shuffled = [...list].sort(() => 0.5 - Math.random());
-  const selected = shuffled.slice(0, 10);
+  function renderFeatured(list){
+    if (!featuredCarousel) return;
 
-  featuredCarousel.innerHTML = "";
+    featuredCarousel.innerHTML = "";
 
-  selected.forEach(product => {
-    featuredCarousel.appendChild(createCard(product));
-  });
-}
-
-/* ==============================
-   GRID NORMAL
-================================ */
-
-function renderProducts(list){
-  productGrid.innerHTML = "";
-
-  if(list.length === 0){
-    productGrid.innerHTML = "<p>Nenhum produto encontrado.</p>";
-    return;
+    const shuffled = [...list].sort(() => 0.5 - Math.random());
+    shuffled.slice(0, 10).forEach(product => {
+      featuredCarousel.appendChild(createCard(product));
+    });
   }
 
-  list.forEach(product => {
-    productGrid.appendChild(createCard(product));
-  });
-}
+  /* ==============================
+     GRID
+  ============================== */
 
-/* ==============================
-   CARD COMPONENT
-================================ */
+  function renderProducts(list){
+    if (!productGrid) return;
 
-function createCard(product){
-  const card = document.createElement("div");
-  card.className = "card";
+    productGrid.innerHTML = "";
 
-  card.innerHTML = `
-    ${product.imagem ? `
-  <div class="image-wrapper">
-    <img src="${product.imagem}" alt="${product.nome}">
-  </div>
-` : ""}
+    if (list.length === 0) {
+      productGrid.innerHTML = "<p>Nenhum produto encontrado.</p>";
+      return;
+    }
 
-    <h3>${product.nome}</h3>
-    ${product.preco ? `<p style="color:#fff;font-weight:bold;">${product.preco}</p>` : ""}
-    ${product.descricao ? `<p>${product.descricao}</p>` : ""}
-    <a href="${product.link}" class="btn-primary" target="_blank" rel="noopener">
-      Ver na Shopee
-    </a>
-  `;
+    list.forEach(product => {
+      productGrid.appendChild(createCard(product));
+    });
+  }
 
-  return card;
-}
+  /* ==============================
+     CARD
+  ============================== */
+
+  function createCard(product){
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      ${product.imagem ? `
+        <div class="image-wrapper">
+          <img src="${product.imagem}" alt="${product.nome}">
+        </div>` : ""}
+
+      <h3>${product.nome}</h3>
+      ${product.preco ? `<p style="color:#fff;font-weight:bold;">${product.preco}</p>` : ""}
+      ${product.descricao ? `<p>${product.descricao}</p>` : ""}
+      <a href="${product.link}" class="btn-primary" target="_blank" rel="noopener">
+        Ver na Shopee
+      </a>
+    `;
+
+    return card;
+  }
+
+  /* ==============================
+     SEARCH
+  ============================== */
 
   if (searchInput) {
     searchInput.addEventListener("input", () => {
@@ -112,4 +122,4 @@ function createCard(product){
     });
   }
 
-
+});
